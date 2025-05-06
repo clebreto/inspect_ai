@@ -299,7 +299,7 @@ def multiple_choice(
             template=str(template),
         )
 
-        state = await generate(state)
+        state = await generate(state, tool_calls="single")
 
         answers = parse_answers(state)
         if answers and answers.group(1):
