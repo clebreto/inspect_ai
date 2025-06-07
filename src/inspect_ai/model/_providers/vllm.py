@@ -145,7 +145,7 @@ class VLLMAPI(OpenAICompatibleAPI):
         host = self.server_args.pop("host", "0.0.0.0")
 
         # Build command as a list
-        cmd = ["vllm", "serve", model_path, "--host", host, "--api-key", api_key]
+        cmd = ["vllm", "serve", model_path, "--host", host, "--api-key", api_key, "--chat-template", "{% for message in messages %}{{ message['role'] }}: {{ message['content'] }}\n{% endfor %}"]
 
         base_url, self.server_process, self.port = start_local_server(
             cmd,
