@@ -224,7 +224,7 @@ def openai_completion_params(
 ) -> dict[str, Any]:
     params: dict[str, Any] = dict(model=model)
     if config.max_tokens is not None:
-        params["max_tokens"] = config.max_tokens
+        params["max_completion_tokens"] = config.max_tokens
     if config.frequency_penalty is not None:
         params["frequency_penalty"] = config.frequency_penalty
     if config.stop_seqs is not None:
